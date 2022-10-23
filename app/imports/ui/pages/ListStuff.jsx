@@ -41,7 +41,7 @@ const ListStuff = () => {
               </tr>
             </thead>
             <tbody>
-              {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+              {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} collection={Stuffs.collection} />)}
             </tbody>
           </Table>
         </Col>

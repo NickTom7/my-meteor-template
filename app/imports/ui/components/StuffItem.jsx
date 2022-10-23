@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button } from 'bootstrap';
 import { Trash } from 'react-bootstrap-icons';
+import { ButtonGroup } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const StuffItem = ({ stuff }) => (
+const StuffItem = ({ stuff, collection }) => {
+    const removeItem = (docID) => {
+      console.log('The item to remove is ${DocID}');
+      collection.remove(docID);
+};
+
+    return (
   <tr>
     <td>{stuff.name}</td>
     <td>{stuff.quantity}</td>
@@ -13,9 +19,10 @@ const StuffItem = ({ stuff }) => (
     <td>
       <Link to={`/edit/${stuff._id}`}>Edit</Link>
     </td>
-    <td><Button></Button></td>
+    <td><ButtonGroup variant="danger" onClick={() => removeItem(stuff._id)}><Trash/></ButtonGroup></td>
   </tr>
-);
+    );
+};
 
 // Require a document to be passed to this component.
 StuffItem.propTypes = {
@@ -25,6 +32,7 @@ StuffItem.propTypes = {
     condition: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
+  collection: PropTypes.object.isRequired,
 };
 
 export default StuffItem;
