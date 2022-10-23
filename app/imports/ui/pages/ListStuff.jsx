@@ -6,7 +6,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import StuffItem from '../components/StuffItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/* Renders a table containing all the Stuff documents. Use <StuffItem> to render each row. */
 const ListStuff = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, stuffs } = useTracker(() => {
@@ -37,6 +37,7 @@ const ListStuff = () => {
                 <th>Quantity</th>
                 <th>Condition</th>
                 <th>Edit</th>
+                <th>Remove</th>
               </tr>
             </thead>
             <tbody>
